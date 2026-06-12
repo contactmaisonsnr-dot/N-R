@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maisons N&amp;R — Clara Jouve, Architecte d'intérieur</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #faf8f3;
+    --clay: #2c2520;
+    --terracotta: #9e2d31;
+    --terracotta-light: #c2696d;
+    --terracotta-dark: #7a2228;
+    --sage: #7a7068;
+    --sage-light: #ede6d4;
+    --gold: #867b18;
+    --gold-light: #b8ad6a;
+    --blush: #d9cdb8;
+    --font-heading: 'Cormorant Garamond', serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    font-family: var(--font-body);
+    background: var(--cream);
+    color: var(--clay);
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+
+  p { margin: 0; line-height: 1.7; }
+
+  a { color: inherit; text-decoration: none; }
+
+  .italic { font-style: italic; }
+  .text-terracotta { color: var(--terracotta); }
+  .text-gold { color: var(--gold); }
+
+  /* ── Liquid background blobs ── */
+  .bg-blobs {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .blob {
+    position: absolute;
+    filter: blur(60px);
+    border-radius: 42% 58% 60% 40% / 48% 42% 58% 52%;
+    opacity: 0.25;
+  }
+  .blob1 {
+    width: 480px; height: 480px; top: -120px; left: -120px;
+    background: var(--terracotta-light);
+    animation: blobFloat 50s ease-in-out infinite reverse;
+  }
+  .blob2 {
+    width: 420px; height: 420px; top: 40%; right: -150px;
+    background: var(--sage-light);
+    animation: blobFloat 36s ease-in-out infinite;
+  }
+  .blob3 {
+    width: 380px; height: 380px; bottom: -140px; left: 30%;
+    background: var(--gold-light);
+    animation: blobFloat 26s ease-in-out infinite;
+  }
+  @keyframes blobFloat {
+    0%, 100% { transform: translate(0,0) scale(1); border-radius: 42% 58% 60% 40% / 48% 42% 58% 52%; }
+    50% { transform: translate(4%, -5%) scale(1.06); border-radius: 55% 45% 40% 60% / 55% 40% 60% 45%; }
+  }
+
+  /* ── Glass surfaces ── */
+  .glass {
+    background: rgba(255,255,255,0.55);
+    backdrop-filter: blur(24px) saturate(160%);
+    -webkit-backdrop-filter: blur(24px) saturate(160%);
+    border: 1px solid rgba(255,255,255,0.6);
+  }
+  .glass-dark {
+    background: rgba(44,37,32,0.78);
+    backdrop-filter: blur(24px) saturate(160%);
+    -webkit-backdrop-filter: blur(24px) saturate(160%);
+    border: 1px solid rgba(255,255,255,0.08);
+    color: var(--cream);
+  }
+  .rounded { border-radius: 28px; }
+  .rounded-pill { border-radius: 999px; }
+
+  /* ── Navbar ── */
+  header.nav {
+    position: fixed;
+    top: 16px; left: 16px; right: 16px;
+    z-index: 50;
+  }
+  .nav-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    border-radius: 999px;
+    padding: 10px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    box-shadow: 0 10px 30px rgba(44,37,32,0.08);
+  }
+  .logo { display: flex; align-items: center; gap: 10px; cursor: pointer; }
+  .logo-badge {
+    width: 38px; height: 38px; flex: none;
+    border-radius: 50%;
+    background: var(--terracotta);
+    color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-heading); font-weight: 700; font-size: 15px;
+  }
+  .logo-text { display: flex; flex-direction: column; line-height: 1.2; }
+  .logo-text strong { font-family: var(--font-heading); font-weight: 600; font-size: 17px; }
+  .logo-text span {
+    font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gold); font-weight: 500; white-space: nowrap;
+  }
+  nav.links {
+    display: flex; gap: 28px;
+    font-family: var(--font-heading); font-size: 13px;
+    text-transform: uppercase; letter-spacing: 0.12em;
+  }
+  nav.links button {
+    background: none; border: none; cursor: pointer;
+    font-family: inherit; font-size: inherit; letter-spacing: inherit;
+    text-transform: inherit; color: var(--clay); padding: 4px 0;
+    transition: color 0.2s;
+  }
+  nav.links button:hover, nav.links button.active { color: var(--terracotta); font-weight: 600; }
+  .btn-cta {
+    background: var(--terracotta); color: #fff;
+    border: none; cursor: pointer;
+    padding: 10px 22px; border-radius: 999px;
+    font-family: var(--font-heading); font-weight: 600; font-size: 13px;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    box-shadow: 0 8px 20px rgba(158,45,49,0.3);
+    transition: background 0.2s;
+  }
+  .btn-cta:hover { background: var(--terracotta-dark); }
+  .btn-ghost {
+    display: inline-flex; align-items: center;
+    padding: 12px 28px; border-radius: 999px;
+    font-family: var(--font-heading); font-weight: 600; font-size: 15px;
+    cursor: pointer; transition: background 0.2s;
+  }
+  @media (max-width: 760px) {
+    nav.links, .nav-cta { display: none; }
+  }
+
+  /* ── Layout ── */
+  main { padding-top: 110px; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+  section { padding: 48px 0; }
+  .page { display: none; }
+  .page.active { display: block; animation: fadeIn 0.4s ease; }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+  .center { text-align: center; }
+  .max-w { max-width: 640px; margin: 0 auto; }
+  .muted { color: rgba(44,37,32,0.65); }
+
+  h1.hero-title { font-size: clamp(36px, 5vw, 58px); font-weight: 600; line-height: 1.12; }
+  h2.title { font-size: clamp(28px, 3.4vw, 38px); font-weight: 600; }
+
+  .grid { display: grid; gap: 24px; }
+  .grid-2 { grid-template-columns: 1fr; }
+  .grid-3 { grid-template-columns: 1fr; }
+  .grid-4 { grid-template-columns: 1fr; }
+  @media (min-width: 680px) {
+    .grid-2 { grid-template-columns: 1fr 1fr; }
+    .grid-4 { grid-template-columns: 1fr 1fr; }
+  }
+  @media (min-width: 980px) {
+    .grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+    .grid-4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
+  }
+
+  .card { padding: 28px; }
+  .badge {
+    display: inline-block; padding: 6px 16px;
+    border-radius: 999px; background: rgba(158,45,49,0.1);
+    color: var(--terracotta-dark); font-size: 13px; font-weight: 600;
+    letter-spacing: 0.04em; margin-bottom: 22px;
+  }
+  .dot { width: 48px; height: 3px; border-radius: 999px; margin-bottom: 16px; }
+  .dot.c1 { background: var(--terracotta); }
+  .dot.c2 { background: var(--sage); }
+  .dot.c3 { background: var(--gold); }
+  .dot.c4 { background: var(--blush); }
+
+  /* Art panel */
+  .art-panel {
+    position: relative; overflow: hidden; aspect-ratio: 4/5;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 18px;
+  }
+  .art-panel span {
+    font-family: var(--font-heading); font-style: italic;
+    color: rgba(255,255,255,0.28); font-size: 6rem; line-height: 1;
+  }
+  .art-terracotta { background: radial-gradient(at 20% 20%, rgba(158,45,49,0.9) 0, transparent 55%), radial-gradient(at 80% 30%, rgba(237,230,212,0.85) 0, transparent 50%), radial-gradient(at 60% 85%, rgba(44,37,32,0.55) 0, transparent 60%), linear-gradient(135deg, #c2696d, #7a2228); }
+  .art-sage { background: radial-gradient(at 25% 25%, rgba(122,112,104,0.9) 0, transparent 55%), radial-gradient(at 80% 20%, rgba(250,248,243,0.7) 0, transparent 50%), radial-gradient(at 70% 85%, rgba(44,37,32,0.5) 0, transparent 60%), linear-gradient(135deg, #ede6d4, #7a7068); }
+  .art-gold { background: radial-gradient(at 25% 20%, rgba(134,123,24,0.9) 0, transparent 55%), radial-gradient(at 80% 30%, rgba(217,205,184,0.8) 0, transparent 50%), radial-gradient(at 65% 85%, rgba(44,37,32,0.5) 0, transparent 60%), linear-gradient(135deg, #b8ad6a, #867b18); }
+  .art-plum { background: radial-gradient(at 25% 25%, rgba(168,154,126,0.9) 0, transparent 55%), radial-gradient(at 80% 20%, rgba(201,191,174,0.7) 0, transparent 50%), radial-gradient(at 65% 85%, rgba(44,37,32,0.5) 0, transparent 60%), linear-gradient(135deg, #d9cdb8, #7a7068); }
+
+  /* Reveal animation */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s cubic-bezier(.22,1,.36,1), transform 0.6s cubic-bezier(.22,1,.36,1); }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* Projects */
+  .project-card { overflow: hidden; cursor: pointer; transition: transform 0.3s; }
+  .project-card:hover { transform: translateY(-4px); }
+  .project-tag { font-family: var(--font-heading); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--terracotta); }
+  .project-meta { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gold); margin-top: 4px; }
+  .project-card h3 { font-size: 19px; margin-top: 8px; }
+  .project-card p.desc { margin-top: 8px; font-size: 14px; }
+  .filters { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 36px; }
+  .filter-btn {
+    border: none; cursor: pointer; padding: 9px 20px;
+    border-radius: 999px; font-family: var(--font-heading); font-weight: 600;
+    font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em;
+    background: rgba(255,255,255,0.55); color: var(--clay);
+    transition: background 0.2s, color 0.2s;
+  }
+  .filter-btn.active { background: var(--terracotta); color: #fff; }
+
+  /* Timeline */
+  .timeline-item { display: flex; gap: 24px; padding: 22px; margin-bottom: 16px; }
+  .timeline-item .year { flex: none; width: 96px; font-family: var(--font-heading); font-size: 18px; font-weight: 600; color: var(--gold); }
+  .timeline-item h4 { font-size: 17px; margin-bottom: 6px; }
+  .timeline-item p { font-size: 14px; }
+  @media (max-width: 600px) {
+    .timeline-item { flex-direction: column; gap: 6px; }
+    .timeline-item .year { width: auto; }
+  }
+
+  /* Hero decoration */
+  .decor-row { display: flex; justify-content: center; align-items: flex-end; gap: 18px; flex-wrap: wrap; padding: 30px 0 6px; }
+  .decor-row svg { display: block; }
+  .decor-item { transition: transform 0.3s; }
+  .decor-item:hover { transform: translateY(-6px); }
+
+  /* Contact */
+  .info-item { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 22px; }
+  .info-icon {
+    width: 44px; height: 44px; flex: none; border-radius: 50%;
+    background: rgba(158,45,49,0.18); color: var(--terracotta-light);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .info-item .label { font-family: var(--font-heading); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold-light); }
+  .info-item .value { margin-top: 4px; }
+
+  form .row { display: grid; gap: 18px; margin-bottom: 18px; }
+  @media (min-width: 600px) { form .row.two { grid-template-columns: 1fr 1fr; } }
+  form label { display: block; font-family: var(--font-heading); font-weight: 600; font-size: 14px; margin-bottom: 8px; }
+  form input, form select, form textarea {
+    width: 100%; padding: 12px 16px; border-radius: 16px;
+    border: 1px solid rgba(44,37,32,0.12); background: var(--cream);
+    color: var(--clay); font-family: var(--font-body); font-size: 14px;
+  }
+  form input:focus, form select:focus, form textarea:focus {
+    outline: 2px solid var(--terracotta); outline-offset: 1px;
+  }
+  .submit-btn {
+    background: var(--terracotta); color: #fff; border: none; cursor: pointer;
+    padding: 13px 32px; border-radius: 999px;
+    font-family: var(--font-heading); font-weight: 600; font-size: 14px;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    box-shadow: 0 8px 20px rgba(158,45,49,0.3);
+    transition: background 0.2s;
+  }
+  .submit-btn:hover { background: var(--terracotta-dark); }
+  .confirm-box { display: none; text-align: center; padding: 40px 0; }
+  .confirm-box.show { display: block; }
+  .confirm-circle {
+    width: 64px; height: 64px; border-radius: 50%;
+    background: var(--sage-light); display: flex; align-items: center;
+    justify-content: center; margin: 0 auto 16px;
+  }
+
+  /* Footer */
+  footer {
+    margin-top: 60px; border-radius: 36px 36px 0 0; overflow: hidden;
+  }
+  .footer-inner { display: grid; gap: 32px; padding: 56px 24px; max-width: 1100px; margin: 0 auto; }
+  @media (min-width: 760px) { .footer-inner { grid-template-columns: 2fr 1fr 1fr; } }
+  .footer-inner h3 { font-family: var(--font-heading); font-size: 13px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold-light); margin-bottom: 14px; }
+  .footer-inner ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+  .footer-inner a:hover { color: var(--terracotta-light); }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding: 20px; text-align: center; font-size: 13px; color: rgba(250,248,243,0.6); }
+</style>
+</head>
+<body>
+
+<div class="bg-blobs">
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
+  <div class="blob blob3"></div>
+</div>
+
+<header class="nav">
+  <div class="nav-inner glass">
+    <div class="logo" onclick="goTo('accueil')">
+      <span class="logo-badge">NR</span>
+      <span class="logo-text">
+        <strong>Maisons N&amp;R</strong>
+        <span>Clara Jouve · Architecte d'intérieur</span>
+      </span>
+    </div>
+    <nav class="links">
+      <button class="nav-btn active" data-page="accueil" onclick="goTo('accueil')">Accueil</button>
+      <button class="nav-btn" data-page="projets" onclick="goTo('projets')">Projets</button>
+      <button class="nav-btn" data-page="apropos" onclick="goTo('apropos')">À propos</button>
+      <button class="nav-btn" data-page="contact" onclick="goTo('contact')">Contact</button>
+    </nav>
+    <button class="btn-cta nav-cta" onclick="goTo('contact')">Démarrer un projet</button>
+  </div>
+</header>
+
+<main>
+  <!-- ══════════ ACCUEIL ══════════ -->
+  <div class="page active" id="page-accueil">
+    <section>
+      <div class="container grid grid-2" style="align-items:center;">
+        <div class="reveal">
+          <span class="badge">Clara Jouve · Architecte d'intérieur indépendante</span>
+          <h1 class="hero-title">Chaque espace mérite <span class="italic text-terracotta">une histoire</span></h1>
+          <p class="muted" style="margin-top:22px; max-width:480px;">
+            Je vous accompagne dans tous vos projets de rénovation intérieure et de décoration,
+            pour créer des espaces uniques et personnalisés — appartements, maisons, boutiques ou bureaux.
+            Mon objectif : concevoir un espace qui vous ressemble et optimise votre confort et votre style.
+          </p>
+          <div style="display:flex; gap:14px; flex-wrap:wrap; margin-top:32px;">
+            <button class="btn-cta" style="padding:13px 28px; font-size:14px;" onclick="goTo('projets')">Découvrir mes projets</button>
+            <button class="btn-ghost glass" onclick="goTo('contact')">Prendre rendez-vous</button>
+          </div>
+        </div>
+        <div class="reveal glass rounded" style="padding:10px;">
+          <div class="art-panel art-terracotta"><span>N&amp;R</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Decoration row -->
+    <section class="center reveal">
+      <span class="badge">Faites défiler</span>
+      <h2 class="title">Chaque pièce trouve <span class="italic text-terracotta">sa place</span></h2>
+      <div class="decor-row">
+        <div class="decor-item reveal" style="transition-delay:.05s">
+          <svg width="120" height="76" viewBox="0 0 220 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="55" width="200" height="60" rx="18" fill="#9e2d31"/><rect x="10" y="30" width="55" height="55" rx="16" fill="#c2696d"/><rect x="155" y="30" width="55" height="55" rx="16" fill="#c2696d"/><rect x="55" y="35" width="110" height="45" rx="14" fill="#b8484c"/><rect x="0" y="100" width="35" height="30" rx="8" fill="#7a2228"/><rect x="185" y="100" width="35" height="30" rx="8" fill="#7a2228"/><circle cx="70" cy="56" r="14" fill="#b8ad6a" opacity="0.7"/><circle cx="150" cy="56" r="14" fill="#a89a7e" opacity="0.7"/>
+          </svg>
+        </div>
+        <div class="decor-item reveal" style="transition-delay:.1s">
+          <svg width="80" height="86" viewBox="0 0 150 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="20" y="40" width="110" height="80" rx="20" fill="#7a7068"/><rect x="20" y="10" width="110" height="50" rx="18" fill="#ede6d4"/><rect x="0" y="50" width="32" height="65" rx="12" fill="#5a4f44"/><rect x="118" y="50" width="32" height="65" rx="12" fill="#5a4f44"/><rect x="10" y="125" width="20" height="25" rx="6" fill="#2c2520"/><rect x="120" y="125" width="20" height="25" rx="6" fill="#2c2520"/><rect x="55" y="65" width="40" height="40" rx="10" fill="#867b18" opacity="0.55"/>
+          </svg>
+        </div>
+        <div class="decor-item reveal" style="transition-delay:.15s">
+          <svg width="46" height="112" viewBox="0 0 90 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M45 10 L80 75 H10 Z" fill="#867b18"/><rect x="40" y="75" width="10" height="115" fill="#7a2228"/><ellipse cx="45" cy="205" rx="35" ry="9" fill="#2c2520"/><circle cx="45" cy="40" r="6" fill="#faf8f3" opacity="0.85"/>
+          </svg>
+        </div>
+        <div class="decor-item reveal" style="transition-delay:.2s">
+          <svg width="74" height="106" viewBox="0 0 140 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M70 120 C30 110 20 60 35 20 C55 60 65 90 70 120 Z" fill="#7a7068"/><path d="M70 120 C110 110 120 55 105 15 C85 55 75 90 70 120 Z" fill="#a89a7e"/><path d="M70 120 C75 80 70 40 60 5 C85 35 85 85 70 120 Z" fill="#ede6d4"/><path d="M40 130 H100 L92 195 H48 Z" fill="#9e2d31"/><rect x="36" y="120" width="68" height="16" rx="4" fill="#7a2228"/>
+          </svg>
+        </div>
+        <div class="decor-item reveal" style="transition-delay:.25s">
+          <svg width="90" height="50" viewBox="0 0 180 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="20" width="160" height="18" rx="6" fill="#7a2228"/><rect x="25" y="38" width="14" height="50" fill="#5a3520"/><rect x="141" y="38" width="14" height="50" fill="#5a3520"/><rect x="60" y="38" width="14" height="50" fill="#5a3520"/><rect x="106" y="38" width="14" height="50" fill="#5a3520"/><circle cx="125" cy="12" r="10" fill="#a89a7e" opacity="0.7"/><circle cx="148" cy="12" r="6" fill="#b8ad6a" opacity="0.8"/>
+          </svg>
+        </div>
+        <div class="decor-item reveal" style="transition-delay:.3s">
+          <svg width="70" height="86" viewBox="0 0 130 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="5" y="5" width="120" height="150" rx="6" fill="#2c2520"/><rect x="16" y="16" width="98" height="128" rx="2" fill="#faf8f3"/><circle cx="65" cy="65" r="28" fill="#9e2d31" opacity="0.85"/><path d="M30 130 L60 80 L85 110 L100 90 L116 130 Z" fill="#7a7068" opacity="0.8"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- Prestations -->
+    <section>
+      <div class="container">
+        <div class="center reveal" style="margin-bottom:36px;">
+          <h2 class="title">Mes prestations</h2>
+          <p class="muted max-w" style="margin-top:10px;">Un accompagnement complet, de la première esquisse aux derniers détails de décoration.</p>
+        </div>
+        <div class="grid grid-3">
+          <div class="card glass rounded reveal">
+            <div class="dot c1"></div>
+            <h3 style="font-size:20px; margin-bottom:8px;">Conseil décoration</h3>
+            <p class="muted">Une intervention ciblée pour redonner vie à votre intérieur : palette, mobilier, accessoires, mise en scène.</p>
+          </div>
+          <div class="card glass rounded reveal" style="transition-delay:.1s">
+            <div class="dot c2"></div>
+            <h3 style="font-size:20px; margin-bottom:8px;">Sur-mesure</h3>
+            <p class="muted">Mobilier, agencement, matériaux : chaque élément est pensé et dessiné spécifiquement pour votre espace et votre usage.</p>
+          </div>
+          <div class="card glass rounded reveal" style="transition-delay:.2s">
+            <div class="dot c3"></div>
+            <h3 style="font-size:20px; margin-bottom:8px;">Conception architecturale intérieure</h3>
+            <p class="muted">De l'esquisse aux plans d'exécution, je prends en charge l'intégralité du projet : restructuration, cloisons, lumière, matières.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Aperçu projets -->
+    <section>
+      <div class="container">
+        <div class="reveal" style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:14px; margin-bottom:28px;">
+          <div>
+            <h2 class="title">Aperçu de projets</h2>
+            <p class="muted" style="margin-top:8px;">Un aperçu de mes dernières réalisations.</p>
+          </div>
+          <a href="#" onclick="goTo('projets'); return false;" style="font-family:var(--font-heading); font-weight:600; color:var(--terracotta);">Voir tous les projets →</a>
+        </div>
+        <div class="grid grid-3" id="home-projects"></div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section>
+      <div class="container">
+        <div class="glass-dark rounded center reveal" style="padding:56px 32px;">
+          <h2 class="title" style="color:var(--cream);">Un projet en tête ?</h2>
+          <p style="margin-top:14px; max-width:520px; margin-left:auto; margin-right:auto; color:rgba(250,248,243,0.8);">
+            Parlons-en. Racontez-moi votre intérieur idéal et donnons-lui vie ensemble, lors d'un premier rendez-vous sans engagement.
+          </p>
+          <button class="btn-cta" style="margin-top:24px;" onclick="goTo('contact')">Me contacter</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ══════════ PROJETS ══════════ -->
+  <div class="page" id="page-projets">
+    <section>
+      <div class="container center reveal">
+        <h1 class="hero-title" style="font-size:clamp(32px,4.5vw,48px);">Mes <span class="italic text-terracotta">projets</span></h1>
+        <p class="muted max-w" style="margin-top:14px;">Une sélection de réalisations qui célèbrent la couleur, la lumière et le mouvement.</p>
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <div class="filters reveal" id="filters"></div>
+        <div class="grid grid-3" id="projects-grid"></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ══════════ À PROPOS ══════════ -->
+  <div class="page" id="page-apropos">
+    <section>
+      <div class="container center reveal">
+        <h1 class="hero-title" style="font-size:clamp(32px,4.5vw,48px);">À propos de <span class="italic text-terracotta">Clara Jouve</span></h1>
+        <p class="muted max-w" style="margin-top:14px;">Architecte d'intérieur indépendante, passionnée par la couleur, la lumière et le bien-être au quotidien.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container grid grid-2" style="align-items:center;">
+        <div class="reveal glass rounded" style="padding:10px;">
+          <div class="art-panel art-sage" style="aspect-ratio:1/1;"><span>C</span></div>
+        </div>
+        <div class="reveal" style="transition-delay:.1s">
+          <h2 class="title">Mon histoire</h2>
+          <p class="muted" style="margin-top:16px;">
+            Architecte d'intérieur diplômée depuis mars 2025, je conçois des espaces pensés pour susciter
+            l'émotion, le bien-être et une vraie qualité de vie au quotidien.
+          </p>
+          <p class="muted" style="margin-top:14px;">
+            Sensible à la couleur, aux formes douces et à la lumière naturelle, j'imagine des intérieurs
+            à la fois fonctionnels et expressifs, où chaque détail a du sens. J'accompagne aussi bien les
+            particuliers que les professionnels, avec une approche attentive, humaine et sur-mesure.
+            Chaque lieu est pour moi une histoire à révéler — un équilibre à trouver entre usage,
+            esthétique et ressenti.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container" style="max-width:760px;">
+        <div class="center reveal" style="margin-bottom:30px;">
+          <h2 class="title">Un fil conducteur : la recherche de sens</h2>
+        </div>
+        <div id="timeline"></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="center reveal" style="margin-bottom:30px;">
+          <h2 class="title">Mes valeurs</h2>
+        </div>
+        <div class="grid grid-4" id="values"></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ══════════ CONTACT ══════════ -->
+  <div class="page" id="page-contact">
+    <section>
+      <div class="container center reveal">
+        <h1 class="hero-title" style="font-size:clamp(32px,4.5vw,48px);">Parlons de votre <span class="italic text-terracotta">projet</span></h1>
+        <p class="muted max-w" style="margin-top:14px;">
+          Que vous ayez un projet précis ou simplement envie d'explorer les possibilités, je serai ravie
+          d'échanger avec vous lors d'un premier rendez-vous, sans engagement.
+        </p>
+      </div>
+    </section>
+    <section>
+      <div class="container grid grid-2" style="grid-template-columns: 1.2fr 1fr;">
+        <div class="glass rounded card reveal">
+          <div class="confirm-box" id="confirm-box">
+            <div class="confirm-circle">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#7a7068" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            </div>
+            <h2 class="title" style="font-size:24px;">Merci pour votre message !</h2>
+            <p class="muted" style="margin-top:10px;">Je vous répondrai dans les 48h.</p>
+          </div>
+          <form id="contact-form">
+            <div class="row two">
+              <div>
+                <label for="prenom">Prénom</label>
+                <input id="prenom" type="text" placeholder="Marie" required>
+              </div>
+              <div>
+                <label for="email">Adresse e-mail</label>
+                <input id="email" type="email" placeholder="marie@exemple.fr" required>
+              </div>
+            </div>
+            <div class="row">
+              <div>
+                <label for="sujet">Type de projet</label>
+                <select id="sujet">
+                  <option value="" disabled selected>Choisissez une prestation…</option>
+                  <option>Conception architecturale complète</option>
+                  <option>Mobilier &amp; aménagement sur-mesure</option>
+                  <option>Conseil décoration</option>
+                  <option>Autre demande</option>
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div>
+                <label for="message">Votre message</label>
+                <textarea id="message" rows="5" placeholder="Décrivez brièvement votre projet, sa localisation, la surface concernée…" required></textarea>
+              </div>
+            </div>
+            <button type="submit" class="submit-btn">Envoyer le message</button>
+          </form>
+        </div>
+
+        <div class="reveal" style="display:flex; flex-direction:column; gap:24px; transition-delay:.1s">
+          <div class="glass-dark rounded" style="padding:36px;">
+            <div id="contact-infos"></div>
+          </div>
+          <div class="glass rounded" style="padding:10px;">
+            <div class="art-panel art-plum" style="aspect-ratio:4/3;"><span>N&amp;R</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="glass-dark">
+  <div class="footer-inner">
+    <div>
+      <div class="logo" style="margin-bottom:14px;">
+        <span class="logo-badge">NR</span>
+        <strong style="font-family:var(--font-heading); font-size:18px;">Maisons N&amp;R</strong>
+      </div>
+      <p style="color:rgba(250,248,243,0.7); max-width:320px;">
+        Clara Jouve, architecte d'intérieur indépendante. Conception architecturale, mobilier sur-mesure
+        et conseil décoration, pour des intérieurs qui ont du sens.
+      </p>
+    </div>
+    <div>
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="#" onclick="goTo('accueil'); return false;">Accueil</a></li>
+        <li><a href="#" onclick="goTo('projets'); return false;">Projets</a></li>
+        <li><a href="#" onclick="goTo('apropos'); return false;">À propos</a></li>
+        <li><a href="#" onclick="goTo('contact'); return false;">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Contact</h3>
+      <p style="color:rgba(250,248,243,0.7); font-size:14px;">
+        contact.maisonsnr@gmail.com<br>
+        Paris · Île-de-France · Pays Basque · Nice
+      </p>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 Maisons N&amp;R — Clara Jouve</div>
+</footer>
+
+<script>
+  const projects = [
+    {
+      title: 'Maison de plain-pied — Domont',
+      category: 'Rénovation',
+      palette: 'terracotta',
+      label: 'I',
+      tag: 'Rénovation complète · Projet de mémoire',
+      meta: 'Val-d’Oise (95) · 2025 · 200 m²',
+      description: "Une maison pensée comme un terrain de jeu créatif : une gaming room, un bureau, un dressing-écrin, recomposés en un ensemble qui respire. Étude bioclimatique et associations de couleurs audacieuses."
+    },
+    {
+      title: 'Maison d’architecte — Maisons-Laffitte',
+      category: 'Agrandissement',
+      palette: 'sage',
+      label: 'II',
+      tag: 'Rénovation & agrandissement · En cours',
+      meta: 'Yvelines (78) · depuis août 2025 · 200 m²',
+      description: "Cohérence esthétique et fonctionnelle entre les nouveaux espaces et l'existant : matériaux et finitions des salles de bain, aménagement du salon et conception des nouveaux plans de cuisine."
+    },
+    {
+      title: 'Studio parisien — Paris 15e',
+      category: 'Conseil décoration',
+      palette: 'gold',
+      label: 'III',
+      tag: 'Conseil décoration',
+      meta: 'Paris · Février 2026',
+      description: "Transformer un studio compact en un cocon chaleureux et coloré, sans travaux : recherche de mobilier et de décoration aux formes affirmées pour structurer le coin salon et l'espace repas."
+    },
+    {
+      title: 'Appartement sur plan — Clichy',
+      category: 'Rénovation',
+      palette: 'plum',
+      label: 'IV',
+      tag: 'Rénovation complète · En cours',
+      meta: 'Clichy · depuis avril 2026 · 177 m²',
+      description: "Réflexion globale pour un investissement locatif saisonnier : agencement, circulations, moodboards, sélection des matériaux et du mobilier, jusqu'au suivi de chantier prévu en 2027."
+    }
+  ];
+
+  const categories = ['Tous', 'Rénovation', 'Agrandissement', 'Conseil décoration'];
+
+  const timeline = [
+    { year: '2024–2025', title: 'Diplôme en architecture d’intérieur — Formation MMI Déco', description: 'Professionnalisation en architecture d’intérieur et création de Maisons N&R, pour accompagner particuliers et professionnels dans leurs projets d’aménagement.' },
+    { year: '2025', title: 'Architecte d’intérieur — Stage Studio Bardot', description: 'Implication dans toutes les phases de projet : relevés sur site, conception d’espaces, plans techniques, moodboards et rendus 3D. Présentations clients, sélection des matériaux et du mobilier, suivi de chantier et travail sur AutoCAD.' },
+    { year: '2023–2024', title: 'Community Manager — Morning', description: 'Immersion dans un univers où l’espace, son usage et son image sont indissociables — une expérience décisive qui a confirmé ma vocation pour l’architecture d’intérieur.' },
+    { year: '2022–2023', title: 'Cheffe de projet B2B — The Cool Republic', description: 'En collaboration avec des hôtels, restaurants et décorateurs : le déclic. L’univers de la décoration devient une évidence et une direction à suivre.' },
+    { year: '2019–2024', title: 'Bachelor en marketing international & Master en marketing', description: 'Des études ouvertes sur le monde, ponctuées d’un séjour à Buenos Aires, qui m’ont permis de développer un œil analytique et critique : comprendre une cible, construire une identité, valoriser un espace.' }
+  ];
+
+  const values = [
+    { title: 'Émotion & bien-être', description: "Je conçois des espaces qui font ressentir quelque chose — où l'on se sent bien, tout simplement.", color: 'c1' },
+    { title: 'Humanité', description: 'Une approche attentive et sur-mesure, à l’écoute de chaque personne, de ses envies et de sa façon de vivre.', color: 'c2' },
+    { title: 'Sensibilité', description: 'La couleur, la lumière naturelle, les formes douces : autant de langages que j’utilise pour révéler l’âme d’un lieu.', color: 'c3' },
+    { title: 'Artisanat & nature', description: 'Inspirée par les paysages méditerranéens et l’artisanat, je privilégie les matières authentiques et les choix durables.', color: 'c4' }
+  ];
+
+  const contactInfos = [
+    { label: 'Email', value: 'contact.maisonsnr@gmail.com', icon: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>' },
+    { label: 'Zone d’intervention', value: 'Paris · Île-de-France · Pays Basque · Nice', icon: '<path d="M12 21s-7-5.5-7-11a7 7 0 1 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/>' },
+    { label: 'Disponibilité', value: 'Disponible du lundi au vendredi', icon: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/>' }
+  ];
+
+  function projectCard(p) {
+    return `<div class="project-card glass rounded reveal">
+      <div class="art-panel art-${p.palette}" style="aspect-ratio:4/3; border-radius:18px 18px 0 0;"><span>${p.label}</span></div>
+      <div style="padding:20px;">
+        <div class="project-tag">${p.tag}</div>
+        <h3>${p.title}</h3>
+        <div class="project-meta">${p.meta}</div>
+        <p class="desc muted">${p.description}</p>
+      </div>
+    </div>`;
+  }
+
+  document.getElementById('home-projects').innerHTML = projects.slice(0,3).map(projectCard).join('');
+
+  function renderProjects(filter) {
+    const list = filter === 'Tous' ? projects : projects.filter(p => p.category === filter);
+    document.getElementById('projects-grid').innerHTML = list.map(projectCard).join('');
+    observeReveals();
+  }
+
+  document.getElementById('filters').innerHTML = categories.map((c, i) =>
+    `<button class="filter-btn glass${i===0 ? ' active' : ''}" data-cat="${c}">${c}</button>`
+  ).join('');
+
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderProjects(btn.dataset.cat);
+    });
+  });
+  renderProjects('Tous');
+
+  document.getElementById('timeline').innerHTML = timeline.map((t, i) =>
+    `<div class="timeline-item glass rounded reveal" style="transition-delay:${i*0.05}s">
+      <div class="year">${t.year}</div>
+      <div>
+        <h4>${t.title}</h4>
+        <p class="muted">${t.description}</p>
+      </div>
+    </div>`
+  ).join('');
+
+  document.getElementById('values').innerHTML = values.map((v, i) =>
+    `<div class="card glass rounded reveal" style="transition-delay:${i*0.08}s">
+      <div class="dot ${v.color}"></div>
+      <h3 style="font-size:18px; margin-bottom:8px;">${v.title}</h3>
+      <p class="muted" style="font-size:14px;">${v.description}</p>
+    </div>`
+  ).join('');
+
+  document.getElementById('contact-infos').innerHTML = contactInfos.map(info =>
+    `<div class="info-item">
+      <div class="info-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${info.icon}</svg>
+      </div>
+      <div>
+        <div class="label">${info.label}</div>
+        <div class="value">${info.value}</div>
+      </div>
+    </div>`
+  ).join('');
+
+  // Navigation
+  function goTo(page) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page-' + page).classList.add('active');
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.toggle('active', b.dataset.page === page));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    observeReveals();
+  }
+
+  // Reveal on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  function observeReveals() {
+    document.querySelectorAll('.reveal:not(.visible)').forEach(el => observer.observe(el));
+  }
+  observeReveals();
+
+  // Contact form
+  document.getElementById('contact-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    e.target.style.display = 'none';
+    document.getElementById('confirm-box').classList.add('show');
+  });
+</script>
+</body>
+</html>
