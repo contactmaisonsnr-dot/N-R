@@ -6,21 +6,21 @@ import { projects } from '../data/projects'
 
 const services = [
   {
-    title: 'Conception sur mesure',
+    title: 'Conseil décoration',
     description:
-      "Plans, agencements et moodboards pensés selon votre mode de vie et vos envies de couleurs.",
+      "Une intervention ciblée pour redonner vie à votre intérieur : palette, mobilier, accessoires, mise en scène.",
     color: 'bg-terracotta',
   },
   {
-    title: 'Décoration & mobilier',
+    title: 'Sur-mesure',
     description:
-      'Sélection de mobilier, textiles et objets pour une ambiance fluide, chaleureuse et harmonieuse.',
+      'Mobilier, agencement, matériaux : chaque élément est pensé et dessiné spécifiquement pour votre espace et votre usage.',
     color: 'bg-sage',
   },
   {
-    title: 'Suivi de chantier',
+    title: 'Conception architecturale intérieure',
     description:
-      "De la démolition à la pose finale, nous coordonnons artisans et fournisseurs jusqu'au bout.",
+      "De l'esquisse aux plans d'exécution, je prends en charge l'intégralité du projet : restructuration, cloisons, lumière, matières.",
     color: 'bg-gold',
   },
 ]
@@ -33,23 +33,25 @@ export default function Home() {
         <div className="mx-auto max-w-6xl grid gap-10 lg:grid-cols-2 items-center">
           <RevealOnScroll>
             <span className="inline-block rounded-full bg-terracotta/10 px-4 py-1 text-sm font-semibold text-terracotta-dark mb-6 tracking-wide">
-              Architecture d&apos;intérieur &amp; Décoration
+              Clara Jouve · Architecte d&apos;intérieur indépendante
             </span>
             <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl font-semibold leading-[1.1] text-clay">
-              Des intérieurs <span className="italic text-terracotta">colorés</span>,
-              <br className="hidden sm:block" /> des espaces{' '}
-              <span className="italic text-sage">fluides</span>
+              Chaque espace mérite{' '}
+              <span className="italic text-terracotta">une histoire</span>
             </h1>
             <p className="mt-6 max-w-xl text-lg text-clay/70">
-              Maisons N&amp;R imagine et réalise des intérieurs vibrants et
-              harmonieux, où chaque pièce raconte une histoire — la vôtre.
+              Je vous accompagne dans tous vos projets de rénovation
+              intérieure et de décoration, pour créer des espaces uniques et
+              personnalisés — appartements, maisons, boutiques ou bureaux.
+              Mon objectif : concevoir un espace qui vous ressemble et
+              optimise votre confort et votre style.
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-4">
               <NavLink
                 to="/projets"
                 className="inline-flex items-center rounded-full bg-terracotta px-7 py-3 font-heading font-semibold text-white shadow-lg shadow-terracotta/30 transition-colors duration-200 hover:bg-terracotta-dark cursor-pointer"
               >
-                Découvrir nos projets
+                Découvrir mes projets
               </NavLink>
               <NavLink
                 to="/contact"
@@ -74,7 +76,7 @@ export default function Home() {
         <div className="mx-auto max-w-6xl">
           <RevealOnScroll className="text-center mb-12">
             <h2 className="font-heading text-3xl md:text-4xl font-semibold text-clay">
-              Notre savoir-faire
+              Mes prestations
             </h2>
             <p className="mt-3 text-clay/70 max-w-xl mx-auto">
               Un accompagnement complet, de la première esquisse aux derniers
@@ -121,10 +123,10 @@ export default function Home() {
           <RevealOnScroll className="flex flex-wrap items-end justify-between gap-4 mb-10">
             <div>
               <h2 className="font-heading text-3xl md:text-4xl font-semibold text-clay">
-                Projets récents
+                Aperçu de projets
               </h2>
               <p className="mt-3 text-clay/70">
-                Un aperçu de nos dernières réalisations.
+                Un aperçu de mes dernières réalisations.
               </p>
             </div>
             <NavLink
@@ -149,7 +151,7 @@ export default function Home() {
                 />
                 <div className="p-5">
                   <span className="text-xs font-heading font-semibold uppercase tracking-wide text-terracotta">
-                    {project.category} · {project.location}
+                    {project.tag}
                   </span>
                   <h3 className="mt-2 font-heading text-lg font-semibold text-clay">
                     {project.title}
@@ -168,14 +170,14 @@ export default function Home() {
             Un projet en tête ?
           </h2>
           <p className="mt-4 max-w-xl mx-auto text-cream/80">
-            Parlons-en. Racontez-nous votre intérieur idéal et donnons-lui
-            vie ensemble.
+            Parlons-en. Racontez-moi votre intérieur idéal et donnons-lui
+            vie ensemble, lors d&apos;un premier rendez-vous sans engagement.
           </p>
           <NavLink
             to="/contact"
             className="mt-8 inline-flex items-center rounded-full bg-terracotta px-8 py-3 font-heading font-semibold text-white shadow-lg shadow-terracotta/30 transition-colors duration-200 hover:bg-terracotta-dark cursor-pointer"
           >
-            Nous contacter
+            Me contacter
           </NavLink>
         </RevealOnScroll>
       </section>

@@ -4,25 +4,8 @@ import ArtPanel from '../components/ArtPanel'
 
 const infos = [
   {
-    label: 'Adresse',
-    value: '12 rue des Artisans, 75011 Paris',
-    icon: (
-      <>
-        <path d="M12 21s-7-5.5-7-11a7 7 0 1 1 14 0c0 5.5-7 11-7 11z" />
-        <circle cx="12" cy="10" r="2.5" />
-      </>
-    ),
-  },
-  {
-    label: 'Téléphone',
-    value: '06 12 34 56 78',
-    icon: (
-      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.32 1.9.57 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.25 1.85.44 2.81.57A2 2 0 0 1 22 16.92z" />
-    ),
-  },
-  {
     label: 'Email',
-    value: 'contact@maisons-nr.fr',
+    value: 'contact.maisonsnr@gmail.com',
     icon: (
       <>
         <rect x="3" y="5" width="18" height="14" rx="2" />
@@ -31,8 +14,18 @@ const infos = [
     ),
   },
   {
-    label: 'Horaires',
-    value: 'Lun – Ven · 9h – 18h',
+    label: 'Zone d’intervention',
+    value: 'Paris · Île-de-France · Pays Basque · Nice',
+    icon: (
+      <>
+        <path d="M12 21s-7-5.5-7-11a7 7 0 1 1 14 0c0 5.5-7 11-7 11z" />
+        <circle cx="12" cy="10" r="2.5" />
+      </>
+    ),
+  },
+  {
+    label: 'Disponibilité',
+    value: 'Disponible du lundi au vendredi',
     icon: (
       <>
         <circle cx="12" cy="12" r="9" />
@@ -63,8 +56,9 @@ export default function Contact() {
             Parlons de votre <span className="italic text-terracotta">projet</span>
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-clay/70">
-            Une question, une idée, un projet ? Écrivez-nous, nous vous
-            répondrons rapidement.
+            Que vous ayez un projet précis ou simplement envie d&apos;explorer
+            les possibilités, je serai ravie d&apos;échanger avec vous lors
+            d&apos;un premier rendez-vous, sans engagement.
           </p>
         </RevealOnScroll>
       </section>
@@ -93,7 +87,7 @@ export default function Contact() {
                   Merci pour votre message !
                 </h2>
                 <p className="mt-2 text-clay/70">
-                  Nous vous répondrons dans les plus brefs délais.
+                  Je vous répondrai dans les 48h.
                 </p>
               </div>
             ) : (
@@ -145,10 +139,10 @@ export default function Contact() {
                     name="projectType"
                     className="w-full rounded-2xl border border-clay/10 bg-cream px-4 py-3 text-clay focus:outline-none focus:ring-2 focus:ring-terracotta transition-colors duration-200"
                   >
-                    <option>Appartement</option>
-                    <option>Maison</option>
-                    <option>Bureau / Commerce</option>
-                    <option>Autre</option>
+                    <option>Conception architecturale complète</option>
+                    <option>Mobilier &amp; aménagement sur-mesure</option>
+                    <option>Conseil décoration</option>
+                    <option>Autre demande</option>
                   </select>
                 </div>
 
@@ -164,7 +158,7 @@ export default function Contact() {
                     name="message"
                     rows={5}
                     required
-                    placeholder="Parlez-nous de votre projet..."
+                    placeholder="Décrivez brièvement votre projet, sa localisation, la surface concernée…"
                     className="w-full rounded-2xl border border-clay/10 bg-cream px-4 py-3 text-clay placeholder:text-clay/40 focus:outline-none focus:ring-2 focus:ring-terracotta transition-colors duration-200"
                   />
                 </div>

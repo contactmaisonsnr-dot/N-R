@@ -48,8 +48,9 @@ export default function Footer() {
             </span>
           </div>
           <p className="text-cream/70 max-w-xs">
-            Architecture d&apos;intérieur &amp; décoration sur mesure.
-            Des intérieurs colorés, chaleureux et pensés pour vous.
+            Clara Jouve, architecte d&apos;intérieur indépendante. Conception
+            architecturale, mobilier sur-mesure et conseil décoration, pour
+            des intérieurs qui ont du sens.
           </p>
         </div>
 
@@ -97,15 +98,15 @@ export default function Footer() {
             ))}
           </div>
           <p className="mt-6 text-cream/70 text-sm">
-            contact@maisons-nr.fr
+            contact.maisonsnr@gmail.com
             <br />
-            06 12 34 56 78
+            Paris · Île-de-France · Pays Basque · Nice
           </p>
         </div>
       </div>
 
       <div className="relative border-t border-cream/10 py-6 text-center text-sm text-cream/60">
-        © {new Date().getFullYear()} Maisons N&amp;R — Tous droits réservés
+        © {new Date().getFullYear()} Maisons N&amp;R — Clara Jouve
       </div>
     </footer>
   )

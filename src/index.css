@@ -1,25 +1,25 @@
 @import "tailwindcss";
 
 @theme {
-  --font-heading: "Playfair Display", serif;
-  --font-body: "Inter", sans-serif;
+  --font-heading: "Cormorant Garamond", serif;
+  --font-body: "DM Sans", sans-serif;
 
-  --color-cream: #f7f2ea;
-  --color-clay: #2a221c;
+  --color-cream: #faf8f3;
+  --color-clay: #2c2520;
 
-  --color-terracotta: #c1502e;
-  --color-terracotta-light: #e0a07f;
-  --color-terracotta-dark: #8f3a1f;
+  --color-terracotta: #9e2d31;
+  --color-terracotta-light: #c2696d;
+  --color-terracotta-dark: #7a2228;
 
-  --color-sage: #5f6f4a;
-  --color-sage-light: #aebb96;
+  --color-sage: #7a7068;
+  --color-sage-light: #ede6d4;
 
-  --color-gold: #c9952c;
-  --color-gold-light: #e6cd9a;
+  --color-gold: #867b18;
+  --color-gold-light: #b8ad6a;
 
-  --color-blush: #d6a59a;
-  --color-lilac: #9c87b8;
-  --color-sky: #7ea0ad;
+  --color-blush: #d9cdb8;
+  --color-lilac: #a89a7e;
+  --color-sky: #c9bfae;
 }
 
 html {
@@ -57,7 +57,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .glass-dark {
-  background: rgba(42, 34, 28, 0.7);
+  background: rgba(44, 37, 32, 0.7);
   backdrop-filter: blur(24px) saturate(160%);
   -webkit-backdrop-filter: blur(24px) saturate(160%);
   border: 1px solid rgba(255, 255, 255, 0.08);

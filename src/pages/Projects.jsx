@@ -69,11 +69,14 @@ export default function Projects() {
                   </div>
                   <div className="p-5">
                     <span className="text-xs font-heading font-semibold uppercase tracking-wide text-terracotta">
-                      {project.category} · {project.location}
+                      {project.tag}
                     </span>
                     <h2 className="mt-2 font-heading text-lg font-semibold text-clay">
                       {project.title}
                     </h2>
+                    <p className="mt-1 text-xs font-semibold uppercase tracking-wide text-gold">
+                      {project.meta}
+                    </p>
                     <p className="mt-2 text-sm text-clay/70">
                       {project.description}
                     </p>

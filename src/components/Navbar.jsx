@@ -23,8 +23,13 @@ export default function Navbar() {
           <span className="flex h-9 w-9 items-center justify-center rounded-full bg-terracotta text-white font-heading font-bold">
             NR
           </span>
-          <span className="font-heading font-semibold text-lg text-clay">
-            Maisons N&amp;R
+          <span className="flex flex-col leading-tight">
+            <span className="font-heading font-semibold text-lg text-clay">
+              Maisons N&amp;R
+            </span>
+            <span className="hidden sm:inline text-[10px] uppercase tracking-[0.18em] text-gold font-medium whitespace-nowrap">
+              Clara Jouve · Architecte d&apos;intérieur
+            </span>
           </span>
         </NavLink>
 
