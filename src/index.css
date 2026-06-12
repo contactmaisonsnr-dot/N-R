@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+@theme {
+  --font-heading: "Poppins", sans-serif;
+  --font-body: "Nunito Sans", sans-serif;
+
+  --color-cream: #fbf5ec;
+  --color-clay: #2e2a26;
+
+  --color-terracotta: #e0764f;
+  --color-terracotta-light: #f4a98a;
+  --color-terracotta-dark: #c4583a;
+
+  --color-sage: #8a9b6e;
+  --color-sage-light: #c4d2ac;
+
+  --color-gold: #e8a33d;
+  --color-gold-light: #f8d9a6;
+
+  --color-blush: #f4a6a0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background-color: var(--color-cream);
+  color: var(--color-clay);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@keyframes blob-float {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    border-radius: 40% 60% 60% 40% / 50% 40% 60% 50%;
+  }
+  33% {
+    transform: translate(20px, -30px) scale(1.05);
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+  66% {
+    transform: translate(-15px, 20px) scale(0.97);
+    border-radius: 30% 70% 50% 50% / 40% 60% 40% 60%;
+  }
+}
+
+.blob {
+  animation: blob-float 18s ease-in-out infinite;
+  border-radius: 40% 60% 60% 40% / 50% 40% 60% 50%;
+}
+
+.blob-slow {
+  animation: blob-float 26s ease-in-out infinite reverse;
+  border-radius: 40% 60% 60% 40% / 50% 40% 60% 50%;
+}
