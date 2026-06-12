@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom'
 import RevealOnScroll from '../components/RevealOnScroll'
 import ArtPanel from '../components/ArtPanel'
+import DecorMorphHero from '../components/DecorMorphHero'
 import { projects } from '../data/projects'
 
 const services = [
@@ -64,6 +65,9 @@ export default function Home() {
           </RevealOnScroll>
         </div>
       </section>
+
+      {/* Scroll-driven decoration morph */}
+      <DecorMorphHero />
 
       {/* Services */}
       <section className="px-6 py-20">
