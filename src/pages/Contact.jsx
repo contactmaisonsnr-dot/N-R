@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import RevealOnScroll from '../components/RevealOnScroll'
-import { DuplexScene } from '../components/illustrations/RoomIllustrations'
+import ArtPanel from '../components/ArtPanel'
 
 const infos = [
   {
@@ -59,8 +59,8 @@ export default function Contact() {
     <div>
       <section className="px-6 pb-12 pt-12">
         <RevealOnScroll className="mx-auto max-w-6xl text-center">
-          <h1 className="font-heading text-4xl md:text-5xl font-bold text-clay">
-            Parlons de votre <span className="text-terracotta">projet</span>
+          <h1 className="font-heading text-4xl md:text-5xl font-semibold text-clay">
+            Parlons de votre <span className="italic text-terracotta">projet</span>
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-clay/70">
             Une question, une idée, un projet ? Écrivez-nous, nous vous
@@ -72,7 +72,7 @@ export default function Contact() {
       <section className="px-6 pb-24">
         <div className="mx-auto max-w-6xl grid gap-10 lg:grid-cols-[1.2fr_1fr]">
           {/* Form */}
-          <RevealOnScroll className="glass rounded-[2.5rem] p-8 sm:p-10 shadow-xl shadow-clay/10">
+          <RevealOnScroll className="glass rounded-3xl p-8 sm:p-10 shadow-xl shadow-clay/10">
             {submitted ? (
               <div className="flex flex-col items-center justify-center text-center py-12">
                 <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-sage-light/60">
@@ -182,7 +182,7 @@ export default function Contact() {
 
           {/* Info */}
           <RevealOnScroll delay={0.15} className="space-y-6">
-            <div className="glass-dark rounded-[2.5rem] text-cream p-8 sm:p-10 relative overflow-hidden">
+            <div className="glass-dark rounded-3xl text-cream p-8 sm:p-10 relative overflow-hidden">
               <div className="relative space-y-6">
                 {infos.map((info) => (
                   <div key={info.label} className="flex items-start gap-4">
@@ -211,8 +211,8 @@ export default function Contact() {
               </div>
             </div>
 
-            <div className="glass rounded-[2.5rem] aspect-[4/3] shadow-md shadow-clay/5 p-6">
-              <DuplexScene className="w-full h-full rounded-[1.75rem]" />
+            <div className="glass rounded-3xl shadow-md shadow-clay/5 p-3">
+              <ArtPanel palette="plum" label="N&R" className="aspect-[4/3] rounded-2xl" />
             </div>
           </RevealOnScroll>
         </div>

@@ -1,5 +1,5 @@
 import RevealOnScroll from '../components/RevealOnScroll'
-import { HouseScene } from '../components/illustrations/RoomIllustrations'
+import ArtPanel from '../components/ArtPanel'
 
 const values = [
   {
@@ -60,8 +60,8 @@ export default function About() {
     <div>
       <section className="px-6 pb-12 pt-12">
         <RevealOnScroll className="mx-auto max-w-6xl text-center">
-          <h1 className="font-heading text-4xl md:text-5xl font-bold text-clay">
-            À propos de <span className="text-terracotta">Maisons N&amp;R</span>
+          <h1 className="font-heading text-4xl md:text-5xl font-semibold text-clay">
+            À propos de <span className="italic text-terracotta">Maisons N&amp;R</span>
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-clay/70">
             Un atelier d&apos;architecture d&apos;intérieur passionné par la
@@ -73,11 +73,11 @@ export default function About() {
       {/* Story */}
       <section className="px-6 py-16">
         <div className="mx-auto max-w-6xl grid gap-10 md:grid-cols-2 items-center">
-          <RevealOnScroll className="glass rounded-[2.5rem] p-6 shadow-xl shadow-clay/10">
-            <HouseScene className="w-full h-auto rounded-[1.75rem]" />
+          <RevealOnScroll className="glass rounded-3xl p-3 shadow-xl shadow-clay/10">
+            <ArtPanel palette="sage" label="N" className="aspect-square rounded-2xl" />
           </RevealOnScroll>
           <RevealOnScroll delay={0.15}>
-            <h2 className="font-heading text-3xl font-bold text-clay">
+            <h2 className="font-heading text-3xl font-semibold text-clay">
               Notre histoire
             </h2>
             <p className="mt-4 text-clay/70">
@@ -100,7 +100,7 @@ export default function About() {
       <section className="px-6 py-20">
         <div className="mx-auto max-w-6xl">
           <RevealOnScroll className="text-center mb-12">
-            <h2 className="font-heading text-3xl md:text-4xl font-bold text-clay">
+            <h2 className="font-heading text-3xl md:text-4xl font-semibold text-clay">
               Nos valeurs
             </h2>
           </RevealOnScroll>
@@ -109,7 +109,7 @@ export default function About() {
               <RevealOnScroll
                 key={value.title}
                 delay={index * 0.08}
-                className="glass rounded-[2rem] p-6 shadow-md shadow-clay/5 transition-transform duration-300 hover:-translate-y-1"
+                className="glass rounded-3xl p-6 shadow-md shadow-clay/5 transition-transform duration-300 hover:-translate-y-1"
               >
                 <div
                   className={`mb-4 h-3 w-12 rounded-full ${value.color}`}
@@ -130,7 +130,7 @@ export default function About() {
       <section className="px-6 py-20">
         <div className="mx-auto max-w-6xl">
           <RevealOnScroll className="text-center mb-12">
-            <h2 className="font-heading text-3xl md:text-4xl font-bold text-clay">
+            <h2 className="font-heading text-3xl md:text-4xl font-semibold text-clay">
               Notre méthode
             </h2>
             <p className="mt-3 text-clay/70 max-w-xl mx-auto">
@@ -143,9 +143,9 @@ export default function About() {
               <RevealOnScroll
                 key={step.number}
                 delay={index * 0.08}
-                className="glass rounded-[2rem] p-6 shadow-md shadow-clay/5"
+                className="glass rounded-3xl p-6 shadow-md shadow-clay/5"
               >
-                <span className="font-heading text-3xl font-bold text-terracotta-light">
+                <span className="font-heading text-3xl font-semibold text-terracotta-light">
                   {step.number}
                 </span>
                 <h3 className="mt-3 font-heading text-lg font-semibold text-clay">

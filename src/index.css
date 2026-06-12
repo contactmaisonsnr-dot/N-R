@@ -1,25 +1,25 @@
 @import "tailwindcss";
 
 @theme {
-  --font-heading: "Poppins", sans-serif;
-  --font-body: "Nunito Sans", sans-serif;
+  --font-heading: "Playfair Display", serif;
+  --font-body: "Inter", sans-serif;
 
-  --color-cream: #fbf5ec;
-  --color-clay: #2e2a26;
+  --color-cream: #f7f2ea;
+  --color-clay: #2a221c;
 
-  --color-terracotta: #e0764f;
-  --color-terracotta-light: #f4a98a;
-  --color-terracotta-dark: #c4583a;
+  --color-terracotta: #c1502e;
+  --color-terracotta-light: #e0a07f;
+  --color-terracotta-dark: #8f3a1f;
 
-  --color-sage: #8a9b6e;
-  --color-sage-light: #c4d2ac;
+  --color-sage: #5f6f4a;
+  --color-sage-light: #aebb96;
 
-  --color-gold: #e8a33d;
-  --color-gold-light: #f8d9a6;
+  --color-gold: #c9952c;
+  --color-gold-light: #e6cd9a;
 
-  --color-blush: #f4a6a0;
-  --color-lilac: #c9a6f4;
-  --color-sky: #8ec9e6;
+  --color-blush: #d6a59a;
+  --color-lilac: #9c87b8;
+  --color-sky: #7ea0ad;
 }
 
 html {
@@ -35,6 +35,8 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
+  font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -48,51 +50,57 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Liquid glass surfaces */
 .glass {
-  background: rgba(255, 255, 255, 0.45);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.6);
 }
 
 .glass-dark {
-  background: rgba(46, 42, 38, 0.55);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(42, 34, 28, 0.7);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* Animated liquid blobs */
+/* Ambient animated blobs - subtle, slow, low-saturation drift */
 @keyframes blob-float {
   0%, 100% {
-    transform: translate(0, 0) scale(1) rotate(0deg);
-    border-radius: 40% 60% 60% 40% / 50% 40% 60% 50%;
+    transform: translate(0, 0) scale(1);
+    border-radius: 42% 58% 60% 40% / 48% 42% 58% 52%;
   }
-  33% {
-    transform: translate(6%, -8%) scale(1.08) rotate(8deg);
-    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  50% {
+    transform: translate(4%, -5%) scale(1.06);
+    border-radius: 55% 45% 40% 60% / 55% 40% 60% 45%;
   }
-  66% {
-    transform: translate(-5%, 6%) scale(0.95) rotate(-6deg);
-    border-radius: 30% 70% 50% 50% / 40% 60% 40% 60%;
-  }
-}
-
-@keyframes hue-drift {
-  0%, 100% { filter: blur(60px) hue-rotate(0deg); }
-  50% { filter: blur(60px) hue-rotate(35deg); }
 }
 
 .blob {
-  animation: blob-float 22s ease-in-out infinite, hue-drift 30s ease-in-out infinite;
-  border-radius: 40% 60% 60% 40% / 50% 40% 60% 50%;
+  animation: blob-float 36s ease-in-out infinite;
+  border-radius: 42% 58% 60% 40% / 48% 42% 58% 52%;
 }
 
 .blob-slow {
-  animation: blob-float 32s ease-in-out infinite reverse, hue-drift 40s ease-in-out infinite;
-  border-radius: 40% 60% 60% 40% / 50% 40% 60% 50%;
+  animation: blob-float 50s ease-in-out infinite reverse;
+  border-radius: 42% 58% 60% 40% / 48% 42% 58% 52%;
 }
 
 .blob-fast {
-  animation: blob-float 14s ease-in-out infinite, hue-drift 22s ease-in-out infinite reverse;
-  border-radius: 40% 60% 60% 40% / 50% 40% 60% 50%;
+  animation: blob-float 26s ease-in-out infinite;
+  border-radius: 42% 58% 60% 40% / 48% 42% 58% 52%;
+}
+
+/* Subtle grain texture for art panels */
+.grain {
+  position: relative;
+}
+
+.grain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+  opacity: 0.12;
+  mix-blend-mode: overlay;
+  pointer-events: none;
 }
