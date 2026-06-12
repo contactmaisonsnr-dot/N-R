@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+import LiquidBackground from './components/LiquidBackground'
 import Home from './pages/Home'
 import Projects from './pages/Projects'
 import About from './pages/About'
@@ -8,7 +9,8 @@ import Contact from './pages/Contact'
 
 function App() {
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="relative flex min-h-screen flex-col">
+      <LiquidBackground />
       <Navbar />
       <main className="flex-1 pt-28">
         <Routes>

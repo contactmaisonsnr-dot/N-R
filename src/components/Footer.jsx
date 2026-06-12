@@ -36,16 +36,7 @@ const socials = [
 
 export default function Footer() {
   return (
-    <footer className="relative mt-24 overflow-hidden bg-clay text-cream">
-      <div
-        aria-hidden="true"
-        className="blob-slow absolute -top-24 -right-24 h-72 w-72 bg-terracotta/30"
-      />
-      <div
-        aria-hidden="true"
-        className="blob absolute -bottom-32 -left-20 h-80 w-80 bg-sage/20"
-      />
-
+    <footer className="glass-dark relative mt-24 overflow-hidden text-cream rounded-t-[3rem]">
       <div className="relative mx-auto max-w-6xl px-6 py-16 grid gap-12 md:grid-cols-3">
         <div>
           <div className="flex items-center gap-2 mb-4">

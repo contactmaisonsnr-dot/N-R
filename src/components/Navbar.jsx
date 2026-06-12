@@ -18,7 +18,7 @@ export default function Navbar() {
 
   return (
     <header className="fixed top-4 left-4 right-4 z-50">
-      <nav className="mx-auto max-w-6xl rounded-full bg-white/80 backdrop-blur-md border border-clay/10 shadow-lg shadow-clay/5 px-6 py-3 flex items-center justify-between">
+      <nav className="glass mx-auto max-w-6xl rounded-full shadow-xl shadow-clay/10 px-6 py-3 flex items-center justify-between">
         <NavLink to="/" className="flex items-center gap-2 cursor-pointer">
           <span className="flex h-9 w-9 items-center justify-center rounded-full bg-terracotta text-white font-heading font-bold">
             NR
@@ -71,7 +71,7 @@ export default function Navbar() {
       </nav>
 
       {open && (
-        <ul className="md:hidden mt-2 mx-auto max-w-6xl rounded-3xl bg-white/95 backdrop-blur-md border border-clay/10 shadow-lg shadow-clay/5 p-4 flex flex-col gap-3 font-heading text-sm uppercase tracking-wide">
+        <ul className="glass md:hidden mt-2 mx-auto max-w-6xl rounded-3xl shadow-xl shadow-clay/10 p-4 flex flex-col gap-3 font-heading text-sm uppercase tracking-wide">
           {links.map((link) => (
             <li key={link.to}>
               <NavLink

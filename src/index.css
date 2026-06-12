@@ -18,6 +18,8 @@
   --color-gold-light: #f8d9a6;
 
   --color-blush: #f4a6a0;
+  --color-lilac: #c9a6f4;
+  --color-sky: #8ec9e6;
 }
 
 html {
@@ -44,27 +46,53 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+/* Liquid glass surfaces */
+.glass {
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+}
+
+.glass-dark {
+  background: rgba(46, 42, 38, 0.55);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Animated liquid blobs */
 @keyframes blob-float {
   0%, 100% {
-    transform: translate(0, 0) scale(1);
+    transform: translate(0, 0) scale(1) rotate(0deg);
     border-radius: 40% 60% 60% 40% / 50% 40% 60% 50%;
   }
   33% {
-    transform: translate(20px, -30px) scale(1.05);
+    transform: translate(6%, -8%) scale(1.08) rotate(8deg);
     border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
   }
   66% {
-    transform: translate(-15px, 20px) scale(0.97);
+    transform: translate(-5%, 6%) scale(0.95) rotate(-6deg);
     border-radius: 30% 70% 50% 50% / 40% 60% 40% 60%;
   }
 }
 
+@keyframes hue-drift {
+  0%, 100% { filter: blur(60px) hue-rotate(0deg); }
+  50% { filter: blur(60px) hue-rotate(35deg); }
+}
+
 .blob {
-  animation: blob-float 18s ease-in-out infinite;
+  animation: blob-float 22s ease-in-out infinite, hue-drift 30s ease-in-out infinite;
   border-radius: 40% 60% 60% 40% / 50% 40% 60% 50%;
 }
 
 .blob-slow {
-  animation: blob-float 26s ease-in-out infinite reverse;
+  animation: blob-float 32s ease-in-out infinite reverse, hue-drift 40s ease-in-out infinite;
+  border-radius: 40% 60% 60% 40% / 50% 40% 60% 50%;
+}
+
+.blob-fast {
+  animation: blob-float 14s ease-in-out infinite, hue-drift 22s ease-in-out infinite reverse;
   border-radius: 40% 60% 60% 40% / 50% 40% 60% 50%;
 }

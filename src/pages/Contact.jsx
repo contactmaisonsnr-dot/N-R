@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import SectionBlobs from '../components/SectionBlobs'
+import RevealOnScroll from '../components/RevealOnScroll'
+import { DuplexScene } from '../components/illustrations/RoomIllustrations'
 
 const infos = [
   {
@@ -56,9 +57,8 @@ export default function Contact() {
 
   return (
     <div>
-      <section className="relative overflow-hidden px-6 pb-12 pt-12">
-        <SectionBlobs className="opacity-50" />
-        <div className="relative mx-auto max-w-6xl text-center">
+      <section className="px-6 pb-12 pt-12">
+        <RevealOnScroll className="mx-auto max-w-6xl text-center">
           <h1 className="font-heading text-4xl md:text-5xl font-bold text-clay">
             Parlons de votre <span className="text-terracotta">projet</span>
           </h1>
@@ -66,13 +66,13 @@ export default function Contact() {
             Une question, une idée, un projet ? Écrivez-nous, nous vous
             répondrons rapidement.
           </p>
-        </div>
+        </RevealOnScroll>
       </section>
 
       <section className="px-6 pb-24">
         <div className="mx-auto max-w-6xl grid gap-10 lg:grid-cols-[1.2fr_1fr]">
           {/* Form */}
-          <div className="rounded-[2.5rem] bg-white p-8 sm:p-10 border border-clay/5 shadow-md shadow-clay/5">
+          <RevealOnScroll className="glass rounded-[2.5rem] p-8 sm:p-10 shadow-xl shadow-clay/10">
             {submitted ? (
               <div className="flex flex-col items-center justify-center text-center py-12">
                 <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-sage-light/60">
@@ -178,12 +178,11 @@ export default function Contact() {
                 </button>
               </form>
             )}
-          </div>
+          </RevealOnScroll>
 
           {/* Info */}
-          <div className="space-y-6">
-            <div className="rounded-[2.5rem] bg-clay text-cream p-8 sm:p-10 relative overflow-hidden">
-              <SectionBlobs className="opacity-40" />
+          <RevealOnScroll delay={0.15} className="space-y-6">
+            <div className="glass-dark rounded-[2.5rem] text-cream p-8 sm:p-10 relative overflow-hidden">
               <div className="relative space-y-6">
                 {infos.map((info) => (
                   <div key={info.label} className="flex items-start gap-4">
@@ -212,8 +211,10 @@ export default function Contact() {
               </div>
             </div>
 
-            <div className="rounded-[2.5rem] bg-gradient-to-br from-sage-light via-blush to-terracotta-light aspect-[4/3] shadow-md shadow-clay/5" />
-          </div>
+            <div className="glass rounded-[2.5rem] aspect-[4/3] shadow-md shadow-clay/5 p-6">
+              <DuplexScene className="w-full h-full rounded-[1.75rem]" />
+            </div>
+          </RevealOnScroll>
         </div>
       </section>
     </div>

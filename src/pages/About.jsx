@@ -1,4 +1,5 @@
-import SectionBlobs from '../components/SectionBlobs'
+import RevealOnScroll from '../components/RevealOnScroll'
+import { HouseScene } from '../components/illustrations/RoomIllustrations'
 
 const values = [
   {
@@ -57,9 +58,8 @@ const steps = [
 export default function About() {
   return (
     <div>
-      <section className="relative overflow-hidden px-6 pb-12 pt-12">
-        <SectionBlobs className="opacity-50" />
-        <div className="relative mx-auto max-w-6xl text-center">
+      <section className="px-6 pb-12 pt-12">
+        <RevealOnScroll className="mx-auto max-w-6xl text-center">
           <h1 className="font-heading text-4xl md:text-5xl font-bold text-clay">
             À propos de <span className="text-terracotta">Maisons N&amp;R</span>
           </h1>
@@ -67,17 +67,16 @@ export default function About() {
             Un atelier d&apos;architecture d&apos;intérieur passionné par la
             couleur, la lumière et le bien-être au quotidien.
           </p>
-        </div>
+        </RevealOnScroll>
       </section>
 
       {/* Story */}
       <section className="px-6 py-16">
         <div className="mx-auto max-w-6xl grid gap-10 md:grid-cols-2 items-center">
-          <div className="relative">
-            <div className="blob-slow absolute -z-10 -top-8 -left-8 h-64 w-64 bg-sage-light/60" />
-            <div className="rounded-[2.5rem] bg-gradient-to-br from-terracotta-light via-blush to-gold-light aspect-[4/3] shadow-xl shadow-clay/10" />
-          </div>
-          <div>
+          <RevealOnScroll className="glass rounded-[2.5rem] p-6 shadow-xl shadow-clay/10">
+            <HouseScene className="w-full h-auto rounded-[1.75rem]" />
+          </RevealOnScroll>
+          <RevealOnScroll delay={0.15}>
             <h2 className="font-heading text-3xl font-bold text-clay">
               Notre histoire
             </h2>
@@ -93,24 +92,24 @@ export default function About() {
               par une écoute attentive, pour concevoir des lieux fluides,
               fonctionnels et résolument vivants.
             </p>
-          </div>
+          </RevealOnScroll>
         </div>
       </section>
 
       {/* Values */}
-      <section className="relative px-6 py-20 bg-white overflow-hidden">
-        <SectionBlobs className="opacity-50" />
-        <div className="relative mx-auto max-w-6xl">
-          <div className="text-center mb-12">
+      <section className="px-6 py-20">
+        <div className="mx-auto max-w-6xl">
+          <RevealOnScroll className="text-center mb-12">
             <h2 className="font-heading text-3xl md:text-4xl font-bold text-clay">
               Nos valeurs
             </h2>
-          </div>
+          </RevealOnScroll>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {values.map((value) => (
-              <div
+            {values.map((value, index) => (
+              <RevealOnScroll
                 key={value.title}
-                className="rounded-[2rem] bg-cream p-6 border border-clay/5 shadow-md shadow-clay/5 transition-transform duration-300 hover:-translate-y-1"
+                delay={index * 0.08}
+                className="glass rounded-[2rem] p-6 shadow-md shadow-clay/5 transition-transform duration-300 hover:-translate-y-1"
               >
                 <div
                   className={`mb-4 h-3 w-12 rounded-full ${value.color}`}
@@ -121,7 +120,7 @@ export default function About() {
                 <p className="mt-2 text-sm text-clay/70">
                   {value.description}
                 </p>
-              </div>
+              </RevealOnScroll>
             ))}
           </div>
         </div>
@@ -130,7 +129,7 @@ export default function About() {
       {/* Process */}
       <section className="px-6 py-20">
         <div className="mx-auto max-w-6xl">
-          <div className="text-center mb-12">
+          <RevealOnScroll className="text-center mb-12">
             <h2 className="font-heading text-3xl md:text-4xl font-bold text-clay">
               Notre méthode
             </h2>
@@ -138,12 +137,13 @@ export default function About() {
               Quatre étapes pour transformer une idée en un intérieur
               harmonieux.
             </p>
-          </div>
+          </RevealOnScroll>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {steps.map((step) => (
-              <div
+            {steps.map((step, index) => (
+              <RevealOnScroll
                 key={step.number}
-                className="rounded-[2rem] bg-white p-6 border border-clay/5 shadow-md shadow-clay/5"
+                delay={index * 0.08}
+                className="glass rounded-[2rem] p-6 shadow-md shadow-clay/5"
               >
                 <span className="font-heading text-3xl font-bold text-terracotta-light">
                   {step.number}
@@ -154,7 +154,7 @@ export default function About() {
                 <p className="mt-2 text-sm text-clay/70">
                   {step.description}
                 </p>
-              </div>
+              </RevealOnScroll>
             ))}
           </div>
         </div>
